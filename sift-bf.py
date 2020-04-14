@@ -1,11 +1,13 @@
 from classes import image,database,matcher
 import os
 import cv2
+import time
 
 absolute_path = os.path.join(os.getcwd(), 'data-image', 'data')
 database = database.Database(absolute_path)
 database.create_database_sift()
 
+start = time.time()
 img = image.Image()
 img.read("hallway2.jpeg")
 kp, des = img.kp_sift()
@@ -20,3 +22,4 @@ for i in database.database:
         matched["name"] = i
 
 print(matched)
+print(time.time()-start)

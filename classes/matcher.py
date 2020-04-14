@@ -11,7 +11,7 @@ class Matcher(object):
         # Apply ratio test
         good = []
         for m,n in matches:
-            if m.distance < 0.75*n.distance:
+            if m.distance < 0.7*n.distance:
                 good.append([m])
         return good
 
@@ -24,6 +24,6 @@ class Matcher(object):
         matches = flann.knnMatch(img1_des,img2_des,k=2)
         good = []
         for m,n in matches:
-            if m.distance < 0.75*n.distance:
-                good.append([m])        
+            if m.distance < 0.7*n.distance:
+                good.append([m])
         return good
