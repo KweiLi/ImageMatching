@@ -1,5 +1,6 @@
 import cv2 as cv
 import exifread
+import numpy as np
 
 class Image(object):
     def __init__(self):
@@ -7,10 +8,12 @@ class Image(object):
         self.gray = []
         self.kp = []
         self.des = []
+        self.shape = []
 
     def read(self, path):
         self.color = cv.imread(path)
         self.gray= cv.cvtColor(self.color,cv.COLOR_BGR2GRAY)
+        self.shape = np.shape(self.gray)
 
     def kp_sift(self):
         sift = cv.xfeatures2d.SIFT_create()
